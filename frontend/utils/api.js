@@ -1,5 +1,6 @@
 import {  STRAPI_API_TOKEN } from "./urls";
 const API_URL='https://e-commerce-um27.onrender.com'
+postgres://estore_4ssb_user:jFgePW5xUoVfaxyiGP46xP57OoiODYvh@dpg-cnir5lgl6cac739a76e0-a.ohio-postgres.render.com/estore_4ssb
 
 export const fetchDataFromApi = async (endpoint) => {
     const options = {
