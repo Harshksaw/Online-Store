@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Image from "next/image";
 import { BiMenuAltRight } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -10,7 +10,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import Wrapper from "./Wrapper";
 import { fetchDataFromApi } from "../utils/api";
 import { useSelector } from "react-redux";
-
+import Logo  from "../public/log.svg"
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
@@ -59,8 +59,13 @@ const Header = () => {
     >
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
-          <img src="/im.jpeg" className="w-[40px] md:w-[60px]" />
+          <Image src={Logo} className="w-[40px] md:w-[60px]"  
+          width={20}
+          height={20}
+
+          />
         </Link>
+
 
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} categories={categories} />
 
