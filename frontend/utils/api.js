@@ -1,6 +1,4 @@
 import { STRAPI_API_TOKEN } from "./urls";
-const API_URL='https://cuddly-acorn-xqjg74995r6h4pw-1337.app.github.dev'
-
 
 export const fetchDataFromApi = async (endpoint) => {
     const options = {
@@ -10,7 +8,7 @@ export const fetchDataFromApi = async (endpoint) => {
         },
     };
 
-    const res = await fetch(`${API_URL}${endpoint}`, options);
+    const res = await fetch(`${process.env.BACKEND_URL}${endpoint}`, options);
     const data = await res.json();
 
     return data;
