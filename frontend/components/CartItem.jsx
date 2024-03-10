@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { useDispatch } from "react-redux";
 import { updateCart } from "../store/slices/cartSlice";
+import { useDispatch } from "react-redux";
 const CartItem = ({ data }) => {
     const p = data?.attributes;
     const dispatch = useDispatch()
@@ -47,7 +47,7 @@ const CartItem = ({ data }) => {
 
 
                     <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
-                        MRP : &#8377;{p.price}
+                        MRP :${p.price}
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@ const CartItem = ({ data }) => {
 
                 <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-2 md:gap-10 text-black/[0.5] text-sm md:text-md">
-                        <div className="flex items-center gap-1">
+                        {/* <div className="flex items-center gap-1">
                             <div className="font-semibold">Size:</div>
                             <select
                                 className="hover:text-black"
@@ -80,7 +80,7 @@ const CartItem = ({ data }) => {
 
 
                             </select>
-                        </div>
+                        </div> */}
 
                         <div className="flex items-center gap-1">
                             <div className="font-semibold">Quantity:</div>

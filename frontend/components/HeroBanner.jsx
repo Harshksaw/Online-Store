@@ -3,7 +3,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { BiArrowBack, BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
 
 import { Carousel } from "react-responsive-carousel";
+import Image from "next/image"
 import React from "react";
+import slide1 from "../public/Herobanner/s3.jpg"
+import slide2 from "../public/Herobanner/s1.jpeg"
+import slide3 from "../public/Herobanner/s2.jpeg"
 
 export const HeroBanner = () => {
   const arrowStyles = {"position":"absolute","zIndex":2,"top":"calc(50% - 15px)","width":30,"height":30,"cursor":"pointer","borderRadius":"50%","backgroundColor":"rgba(0,0,0,0.5)","display":"flex","alignItems":"center","justifyContent":"center" ,"color":"yellow"}
@@ -48,43 +52,26 @@ export const HeroBanner = () => {
       >
 
         <div>
-          <img
-            src="/slide-1.png"
+          <Image
+            src={slide1}
             className="aspect-[16/10] md:aspect-auto object-cover"
+
           />
-          <div
-            className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald 
-                    bg-gray-100 absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px]
-                    md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90"
-          >
-            Legend 1
-          </div>
+         
         </div>
         <div>
-          <img
-            src="/slide-2.png"
+       <Image
+            src={slide2}
             className="aspect-[16/10] md:aspect-auto object-cover"
           />
-          <div
-            className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald 
-                    bg-gray-100 absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px]
-                    md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90"
-          >
-            Legend 1
-          </div>
+         
         </div>
         <div>
-          <img
-            src="/slide-3.png"
+       <Image
+            src={slide3}
             className="aspect-[16/10] md:aspect-auto object-cover"
           />
-          <div
-            className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald 
-                    bg-gray-100 absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px]
-                    md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90"
-          >
-            Legend 1
-          </div>
+        
         </div>
 
       </Carousel>

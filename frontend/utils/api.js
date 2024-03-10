@@ -1,5 +1,5 @@
-import {  STRAPI_API_TOKEN } from "./urls";
-const API_URL='http://localhost:1337'
+import { STRAPI_API_TOKEN } from "./urls";
+const API_URL='https://cuddly-acorn-xqjg74995r6h4pw-1337.app.github.dev'
 
 
 export const fetchDataFromApi = async (endpoint) => {
