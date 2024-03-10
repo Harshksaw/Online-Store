@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+
 import { BiMenuAltRight } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
+import Image from "next/image";
 import { IoMdHeartEmpty } from "react-icons/io";
 import Link from "next/link";
+import Logo  from "../public/log.svg"
 import Menu from "./Menu";
 import MenuMobile from "./MenuMobile";
 import { VscChromeClose } from "react-icons/vsc";
 import Wrapper from "./Wrapper";
 import { fetchDataFromApi } from "../utils/api";
 import { useSelector } from "react-redux";
-import Logo  from "../public/log.svg"
+
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
@@ -55,11 +57,11 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
+      className={`w-full h-[50px] md:h-[80px] bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300 flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show} border-blue`}
     >
-      <Wrapper className="h-[60px] flex justify-between items-center">
+      <Wrapper className="h-[60px] flex justify-between items-center border-black">
         <Link href="/">
-          <Image src={Logo} className="w-[40px] md:w-[60px]"  
+          <Image src={Logo} className="w-[40px] md:w-[60px] bg-blue-200"  
           width={20}
           height={20}
 
@@ -81,12 +83,12 @@ const Header = () => {
         <div className="flex items-center gap-2 text-black">
 
 
-          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+          {/* <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
             <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />
             <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
               1
             </div>
-          </div>
+          </div> */}
 
 
 
