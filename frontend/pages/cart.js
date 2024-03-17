@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useMemo, useState } from "react";
 import {loadStripe} from '@stripe/stripe-js';
 import { makePaymentRequest } from "../utils/api";
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 const Cart = () => {
   const {cartItems} = useSelector((state) => state.cart);
@@ -20,22 +20,22 @@ const Cart = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const handlePayment = async()=>{
-    try {
-      setLoading(true);
-      const stripe = await stripePromise;
-      const res = await makePaymentRequest("/api/orders", {
-          products: cartItems,
-      });
-      await stripe.redirectToCheckout({
-          sessionId: res.stripeSession.id,
-      });
-    } catch (error) {
+  // const handlePayment = async()=>{
+  //   try {
+  //     setLoading(true);
+  //     const stripe = await stripePromise;
+  //     const res = await makePaymentRequest("/api/orders", {
+  //         products: cartItems,
+  //     });
+  //     await stripe.redirectToCheckout({
+  //         sessionId: res.stripeSession.id,
+  //     });
+  //   } catch (error) {
 
-      setLoading(false);
-      console.log(error);
-  }
-  }
+  //     setLoading(false);
+  //     console.log(error);
+  // }
+  // }
 
 
  
