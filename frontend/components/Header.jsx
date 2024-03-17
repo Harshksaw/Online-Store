@@ -62,6 +62,7 @@ const Header = () => {
       <Wrapper className="h-[60px] flex justify-between items-center border-black">
         <Link href="/">
           <Image src={Logo} className="w-[40px] md:w-[60px] bg-blue-200"  
+          alt="Description of the image"
           width={20}
           height={20}
 

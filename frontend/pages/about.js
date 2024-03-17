@@ -2,6 +2,9 @@ import Image from 'next/image';
 import logo from "../public/log.png";
 const About = () => {
     return (
+
+        
+        
         <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-500 to-purple-500">
             <div className="container mx-auto flex flex-wrap">
                 <div className="w-full md:w-1/2">

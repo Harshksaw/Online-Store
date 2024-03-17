@@ -61,8 +61,10 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-20 py-10 mb-40">
       <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
+      
+      <div className="bg-gray-100 dark:bg-gray-200">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2" htmlFor="name">
@@ -76,6 +78,7 @@ const CheckoutPage = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            placeholder="Enter your name"
           />
         </div>
         <div className="mb-4">
@@ -90,6 +93,7 @@ const CheckoutPage = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            placeholder="Enter your email"
           />
         </div>
         <div className="mb-4">
@@ -107,6 +111,7 @@ const CheckoutPage = () => {
             value={formData.phoneNumber}
             onChange={handleChange}
             required
+            placeholder="Enter your phone number"
           />
         </div>
         <div className="mb-4">
@@ -121,6 +126,7 @@ const CheckoutPage = () => {
             value={formData.state}
             onChange={handleChange}
             required
+            placeholder="Enter your state"
           />
         </div>
         <div className="mb-4">
@@ -135,6 +141,7 @@ const CheckoutPage = () => {
             value={formData.city}
             onChange={handleChange}
             required
+            placeholder="Enter your city"
           />
         </div>
         <div className="mb-4">
@@ -148,6 +155,7 @@ const CheckoutPage = () => {
             value={formData.address}
             onChange={handleChange}
             required
+            placeholder="Enter your delivery address"
           />
         </div>
         {/* Add additional form fields for payment information (handled later in Strapi) */}
@@ -158,6 +166,7 @@ const CheckoutPage = () => {
           Place Order
         </button>
       </form>
+      </div>
     </div>
   );
 };
