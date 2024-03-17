@@ -1,4 +1,5 @@
 import { STRAPI_API_TOKEN } from "./urls";
+const API_URL="https://online-store-4u9b.onrender.com"
 
 export const fetchDataFromApi = async (endpoint) => {
     const options = {
@@ -8,7 +9,7 @@ export const fetchDataFromApi = async (endpoint) => {
         },
     };
 
-    const res = await fetch(`${process.env.BACKEND_URL}${endpoint}`, options);
+    const res = await fetch(`${API_URL}${endpoint}`, options);
     const data = await res.json();
 
     return data;
