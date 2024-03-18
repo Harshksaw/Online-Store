@@ -25,9 +25,7 @@
     "description": {
       "type": "richtext"
     },
-    "size": {
-      "type": "json"
-    },
+
     "image": {
       "allowedTypes": [
         "images"

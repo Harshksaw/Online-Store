@@ -55,13 +55,14 @@ export const HeroBanner = () => {
           <Image
             src={slide1}
             className="aspect-[16/10] md:aspect-auto object-cover"
-
+            alt="Description of the image"
           />
          
         </div>
         <div>
        <Image
             src={slide2}
+            alt="Description of the image"
             className="aspect-[16/10] md:aspect-auto object-cover"
           />
          
@@ -69,6 +70,7 @@ export const HeroBanner = () => {
         <div>
        <Image
             src={slide3}
+            alt="Description of the image"
             className="aspect-[16/10] md:aspect-auto object-cover"
           />
         
