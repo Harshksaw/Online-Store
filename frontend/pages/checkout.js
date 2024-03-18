@@ -12,7 +12,22 @@ const CheckoutPage = () => {
   });
 
   const {cartItems} = useSelector((state) => state.cart);
+  console.log("cartItems->",cartItems);
 
+  //product data
+  const productData = cartItems.map(item => ({
+    id: item.id,
+    name: item.attributes.name,
+    price: item.attributes.price,
+    quantity: item.quantity
+  }));
+  
+  console.log("productData->", productData);
+  const formattedProductData = productData.map(product => 
+    `ID: ${product.id}, Name: ${product.name}, Price: ${product.price}, Quantity: ${product.quantity}`
+  ).join('; ');
+  
+  console.log("ans=>",formattedProductData);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -33,7 +48,8 @@ const CheckoutPage = () => {
                 'address' : `${formData.address}`,
                 'phoneNumber' : `${formData.phoneNumber}`,
                 'state' : `${formData.state}`,
-                'city' : `${formData.city}`
+                'city' : `${formData.city}`,
+                'products' : `${formattedProductData}`
             }
         ]
     })
@@ -51,9 +67,13 @@ const CheckoutPage = () => {
 
     try {
       //   const response = await axios.post('/api/checkouts', formData);
-      console.log("Checkout data sent successfully:", formData);
       // Handle successful response (e.g., show a success message)
-      googleformsubmit();
+      if(productData.length <= 0){
+        throw new Error("No products in cart");
+      }
+      await googleformsubmit();
+      console.log("Checkout data sent successfully:", formData);
+
     } catch (error) {
       console.error("Error sending checkout data:", error);
       // Handle error (e.g., show an error message)
