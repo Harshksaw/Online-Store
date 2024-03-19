@@ -58,35 +58,14 @@ const CartItem = ({ data }) => {
 
                 <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-2 md:gap-10 text-black/[0.5] text-sm md:text-md">
-                        {/* <div className="flex items-center gap-1">
-                            <div className="font-semibold">Size:</div>
-                            <select
-                                className="hover:text-black"
-                                onChange={()=> updateCartItem(e, "selectedSize")}
-
-                            >
-                                
-                                {p.size.data.map((item, i)=>{
-                                    return (
-                                        <option 
-
-                                        key={i}
-                                        disabled={!item.enabled ? true : false}
-                                        defaultValue = {item.selectedSize === item.size}
-                                        value={item.size}
-                                        >{item.size}</option>
-                                    )
-                                })}
-
-
-                            </select>
-                        </div> */}
+                     
 
                         <div className="flex items-center gap-1">
                             <div className="font-semibold">Quantity:</div>
                             <select
                                 className="hover:text-black"
                                 onChange={(e) => updateCartItem(e, "quantity")}
+                                value={data.quantity}
                             >
                                 {Array.from({length: 10}, (_, i)=> i+1).map((q, i)=>{
                                     return(
