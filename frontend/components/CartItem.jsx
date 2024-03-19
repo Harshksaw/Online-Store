@@ -63,6 +63,8 @@ const CartItem = ({ data }) => {
                         <div className="flex items-center gap-1">
                             <div className="font-semibold">Quantity:</div>
                             <select
+
+                                defaultValue={data.quantity}
                                 className="hover:text-black"
                                 onChange={(e) => updateCartItem(e, "quantity")}
                                 value={data.quantity}
