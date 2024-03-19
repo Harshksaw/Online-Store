@@ -1,13 +1,13 @@
 "use client";
 
-import ConfirmationModal from "@/components/Model";
-import CheckoutModal from "@/components/Model";
+import ConfirmationModal from "@/components/Modal";
+import CheckoutModal from "@/components/Modal";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 const CheckoutPage = () => {
   const router = useRouter();
-  const [confirmationModal, setConfirmationModal] = useState(true);
+  const [confirmationModal, setConfirmationModal] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +19,7 @@ const CheckoutPage = () => {
   });
 
   const { cartItems } = useSelector((state) => state.cart);
-  console.log("cartItems->", cartItems);
+  // console.log("cartItems->", cartItems);
 
   const modalData = {
     text1: "Thank you for your order!",
@@ -35,7 +35,7 @@ const CheckoutPage = () => {
     quantity: item.quantity,
   }));
 
-  console.log("productData->", productData);
+  // console.log("productData->", productData);
   const formattedProductData = productData
     .map(
       (product) =>
@@ -43,13 +43,13 @@ const CheckoutPage = () => {
     )
     .join("; ");
 
-  console.log("ans=>", formattedProductData);
+  // console.log("formattedProductdata=>", formattedProductData);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  const googleformsubmit = async () => {
-    fetch("https://sheetdb.io/api/v1/j79vyf96l9ukc", {
+  const googleFormSubmit = async () => {
+    fetch("https://sheetdb.io/api/v1/un4h58t71finv", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -71,7 +71,7 @@ const CheckoutPage = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      // .then((data) => console.log(data));
     console.log("orders->", cartItems);
   };
   const handleSubmit = async (event) => {
@@ -79,18 +79,30 @@ const CheckoutPage = () => {
 
     try {
       //   const response = await axios.post('/api/checkouts', formData);
-      // Handle successful response (e.g., show a success message)
+
       if (productData.length <= 0) {
         throw new Error("No products in cart");
       }
-      await googleformsubmit();
-      console.log("Checkout data sent successfully:", formData);
+      const res = await googleFormSubmit();
+      console.log("Checkout data sent successfully:", res);
       setConfirmationModal(true);
+
     } catch (error) {
       console.error("Error sending checkout data:", error);
-      // Handle error (e.g., show an error message)
+
     }
   };
+
+  const [error, setError] = useState(false);
+  const handleSubmitButton = async ()=>{
+
+    if (!formData.name || !formData.email || !formData.address || !formData.phoneNumber || !formData.state || !formData.city || cartItems.length === 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+
+  }
 
   return (
     <>
@@ -197,6 +209,7 @@ const CheckoutPage = () => {
             {/* Add additional form fields for payment information (handled later in Strapi) */}
             <button
               type="submit"
+              onClick={handleSubmitButton}
               className="inline-flex items-center px-4 py-2 bg-indigo-500 text-white font-bold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Place Order
@@ -206,6 +219,16 @@ const CheckoutPage = () => {
       </div>
 
       {confirmationModal && <ConfirmationModal modalData={modalData} />}
+      {error && <ConfirmationModal modalData={
+        {
+          text1: "Error",
+          text2: "Please fill all the fields and add products to cart",
+          btn1Text: "Ok",
+          btn2Text: "Cart!",
+          btn1Handler: () => setError(false) ,
+          btn2Handler:()=> router.push('/cart', {scroll:false})
+        }
+      } />}
     </>
   );
 };

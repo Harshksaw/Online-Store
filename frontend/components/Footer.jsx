@@ -7,7 +7,7 @@ const Footer = () => {
 
         return (
             
-            <footer className="bg-black text-white pt-2 pb-3 fixed bottom-0 w-full">
+            <footer className="bg-black text-white pt-2 pb-3 relative bottom-0 w-full">
               
                 <Wrapper className="flex justify-between mt-5 flex-col md:flex-row gap-[10px] md:gap-0">
 
