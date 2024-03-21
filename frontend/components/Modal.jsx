@@ -49,13 +49,18 @@ export default function ConfirmationModal({ modalData }) {
             onclick={modalData?.btn1Handler}
             text={modalData?.btn1Text}
           />
-          <button
-            className="cursor-pointer rounded-md text-black-900 hover:bg-green-600 hover:text-black-200 bg-green-400
-                                   py-[8px] px-[20px] font-semibold duration-300 "
-            onClick={modalData?.btn2Handler}
-          >
-            {modalData?.btn2Text}
-          </button>
+            {
+              modalData?.btn2Handler &&
+              <button
+              className="cursor-pointer rounded-md text-black-900 hover:bg-green-600 hover:text-black-200 bg-green-400
+                                     py-[8px] px-[20px] font-semibold duration-300 "
+              onClick={modalData?.btn2Handler}
+            >
+              {modalData?.btn2Text}
+            </button>
+
+            }
+         
         </div>
       </div>
     </div>
