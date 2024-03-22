@@ -21,7 +21,7 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
                 alt={p.name}
                 className="min-h-full object-cover"
             />
-            <div className="p-4 text-black/[0.9] ">
+            <div className="p-4 text-black/[0.9] z-10 bg-slate-200">
                 <h2 className="text-lg font-medium">{p.name}</h2>
                 <div className="flex items-center text-black/[0.5]">
                     <p className="mr-2 text-lg font-semibold">
