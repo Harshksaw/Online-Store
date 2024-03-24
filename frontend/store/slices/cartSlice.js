@@ -4,6 +4,7 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cartItems: [],
+        isCheckout: false,
     },
     reducers: {
         addToCart: (state, action) => {
@@ -34,10 +35,14 @@ export const cartSlice = createSlice({
                 (p) => p.id !== action.payload.id
             );
         },
+        checkoutCart: (state) => {
+           state.isCheckout = !state.isCheckout;
+
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToCart, updateCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, updateCart, removeFromCart , checkoutCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

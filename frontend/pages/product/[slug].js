@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/components/Wrapper";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
@@ -12,12 +13,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addToCart } from "@/store/slices/cartSlice";
+import Router from 'next/router'
 
 const ProductDetails = ({ product, products }) => {
     const [selectedSize, setSelectedSize] = useState(true);
     const [showError, setShowError] = useState(false);
     const dispatch = useDispatch();
     const p = product?.data?.[0]?.attributes;
+
+    const [loading , setloading] = useState(false);
+
+   
+
+   
+
+
 
     const notify = () => {
         toast.success("Success. Check your cart!", {
@@ -32,9 +42,44 @@ const ProductDetails = ({ product, products }) => {
         });
     };
 
+
+    const handleCheckout = () => {
+
+        dispatch(
+            addToCart({
+                ...product?.data?.[0],
+
+                oneQuantityPrice: p.price,
+            })
+        );
+        notify();
+    }
+    const isCheckout = useSelector((state) => state.cart.isCheckout);
+    useEffect(() => {
+        setloading(true);
+        if (isCheckout) {
+            setTimeout(() => {
+                handleCheckout();
+                Router.push("/checkout");
+            }, 1000);
+        }
+    }, []);
+
+
     return (
+    
+
+        
         <div className="w-full md:py-20">
             <ToastContainer />
+            {loading && (
+            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+        )}
+        
+
+
             <Wrapper>
                 <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
                     {/* left column start */}
@@ -94,14 +139,8 @@ const ProductDetails = ({ product, products }) => {
                                    
                                        
                                 } else {
-                                    dispatch(
-                                        addToCart({
-                                            ...product?.data?.[0],
-                                            // selectedSize,
-                                            oneQuantityPrice: p.price,
-                                        })
-                                    );
-                                    notify();
+                                    handleCheckout()
+                                   
                                 }
                             }}
                         >
@@ -126,6 +165,8 @@ const ProductDetails = ({ product, products }) => {
                 <RelatedProducts products={products} />
             </Wrapper>
         </div>
+  
+
     );
 };
 
