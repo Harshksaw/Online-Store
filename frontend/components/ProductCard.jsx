@@ -50,7 +50,7 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
 
       <div className="flex items-center justify-between p-4 bg-white h-[30%] margin-top-auto">
         <div className="p-4 text-black/[0.9]">
-          <div className="flex items-center text-black/[0.5]">
+          <div className="flex items-center text-black/[0.5] flex-row ">
             <p className="mr-2 text-lg font-semibold">${p.price}</p>
 
             {p.original_price && (
@@ -66,7 +66,7 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center  h-15 w-40  md:w-40  md:h-10 bg-gray-700 rounded-md object-contain hover:scale-105 transition-opacity">
+        <div className="flex items-center justify-center  h-15 w-45  md:w-40  md:h-10 bg-gray-700 rounded-md object-contain hover:scale-105 transition-opacity">
           <button
             onClick={handlebutton}
             className="hover:text-3xl transition-all duration-200"
