@@ -66,12 +66,12 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center w-40 h-10 bg-gray-700 rounded-md object-contain hover:scale-105 transition-opacity">
+        <div className="flex items-center justify-center  h-15 w-40  md:w-40  md:h-10 bg-gray-700 rounded-md object-contain hover:scale-105 transition-opacity">
           <button
             onClick={handlebutton}
             className="hover:text-3xl transition-all duration-200"
           >
-            <h2 className="text-yellow-500 text-2xl font-bold ">Buy Now</h2>
+            <h2 className="text-yellow-500 text-xl font-bold md:text-2xl">Buy Now</h2>
           </button>
         </div>
       </div>
